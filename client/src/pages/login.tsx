@@ -53,7 +53,7 @@ export default function LoginPage() {
           <div className="absolute -bottom-10 left-1/2 transform -translate-x-1/2">
             <div className="glass-card px-6 py-3 rounded-full">
               <p className="text-sm font-medium text-white dark:text-gray-200">
-                AuthSystem Pro AI
+                
               </p>
             </div>
           </div>

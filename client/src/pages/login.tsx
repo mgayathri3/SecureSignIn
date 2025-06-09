@@ -89,7 +89,7 @@ export default function LoginPage() {
                   id="username"
                   type="text"
                   placeholder="Enter your username"
-                  className="h-12 rounded-xl focus-ring bg-white/20 dark:bg-black/20 border-white/30 dark:border-gray-600 text-white dark:text-gray-100 placeholder:text-gray-300 dark:placeholder:text-gray-400"
+                  className="h-12 rounded-xl focus-ring bg-white/20 dark:bg-black/20 border-white/30 dark:border-gray-600 text-white dark:text-gray-100 placeholder-gray-300 dark:placeholder-gray-400"
                   {...register("username")}
                 />
                 {errors.username && (
@@ -98,13 +98,13 @@ export default function LoginPage() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="password">Password</Label>
+                <Label htmlFor="password" className="text-white dark:text-gray-200">Password</Label>
                 <div className="relative">
                   <Input
                     id="password"
                     type={showPassword ? "text" : "password"}
                     placeholder="Enter your password"
-                    className="h-12 rounded-xl pr-12 focus-ring"
+                    className="h-12 rounded-xl pr-12 focus-ring bg-white/20 dark:bg-black/20 border-white/30 dark:border-gray-600 text-white dark:text-gray-100 placeholder-gray-300 dark:placeholder-gray-400"
                     {...register("password")}
                   />
                   <Button
@@ -115,14 +115,14 @@ export default function LoginPage() {
                     onClick={() => setShowPassword(!showPassword)}
                   >
                     {showPassword ? (
-                      <EyeOff className="h-4 w-4 text-muted-foreground" />
+                      <EyeOff className="h-4 w-4 text-gray-300 dark:text-gray-400" />
                     ) : (
-                      <Eye className="h-4 w-4 text-muted-foreground" />
+                      <Eye className="h-4 w-4 text-gray-300 dark:text-gray-400" />
                     )}
                   </Button>
                 </div>
                 {errors.password && (
-                  <p className="text-sm text-destructive">{errors.password.message}</p>
+                  <p className="text-sm text-red-300 dark:text-red-400">{errors.password.message}</p>
                 )}
               </div>
 
@@ -133,18 +133,18 @@ export default function LoginPage() {
                     type="checkbox"
                     className="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary"
                   />
-                  <Label htmlFor="remember" className="text-sm font-normal">
+                  <Label htmlFor="remember" className="text-sm font-normal text-white dark:text-gray-200">
                     Remember me
                   </Label>
                 </div>
-                <Link href="#" className="text-sm font-medium text-primary hover:underline">
+                <Link href="#" className="text-sm font-medium text-blue-300 hover:text-blue-200 hover:underline">
                   Forgot password?
                 </Link>
               </div>
 
               <Button
                 type="submit"
-                className="w-full h-12 gradient-primary text-white font-semibold rounded-xl hover:opacity-90 focus-ring"
+                className="w-full h-12 gradient-primary text-white font-semibold rounded-xl hover:opacity-90 focus-ring shadow-lg"
                 disabled={isLoginPending}
               >
                 {isLoginPending ? (
@@ -158,16 +158,17 @@ export default function LoginPage() {
               </Button>
             </form>
 
-            <div className="mt-8 pt-6 border-t text-center">
-              <p className="text-muted-foreground">Don't have an account?</p>
+            <div className="mt-8 pt-6 border-t border-white/20 text-center">
+              <p className="text-gray-200 dark:text-gray-300">Don't have an account?</p>
               <Link href="/signup">
-                <Button variant="link" className="mt-1 font-semibold text-primary">
+                <Button variant="link" className="mt-1 font-semibold text-blue-300 hover:text-blue-200">
                   Create an account
                 </Button>
               </Link>
             </div>
           </CardContent>
         </Card>
+        </div>
       </div>
     </div>
   );

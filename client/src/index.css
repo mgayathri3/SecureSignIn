@@ -109,11 +109,36 @@
 
 /* Floating label animation */
 .floating-label {
-  @apply absolute left-4 -top-2.5 bg-white px-2 text-sm text-muted-foreground transition-all duration-200;
+  @apply absolute left-4 -top-2.5 bg-white dark:bg-gray-800 px-2 text-sm text-muted-foreground transition-all duration-200;
 }
 
 .floating-label.active {
   @apply text-primary;
+}
+
+/* Opacity utilities for compatibility */
+.bg-white\/20 {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.bg-black\/20 {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.border-white\/30 {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.border-white\/20 {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.text-gray-300 {
+  color: rgb(209, 213, 219);
+}
+
+.text-gray-400 {
+  color: rgb(156, 163, 175);
 }
 
 /* Card shadows */

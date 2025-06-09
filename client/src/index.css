@@ -99,7 +99,7 @@
 }
 
 .role-card:hover {
-  @apply border-primary/30 bg-primary/5;
+  @apply border-primary bg-primary/10;
 }
 
 .role-card.selected {

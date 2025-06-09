@@ -41,9 +41,13 @@ export class MemStorage implements IStorage {
     const hashedPassword = await bcrypt.hash(insertUser.password, 12);
     
     const user: User = {
-      ...insertUser,
       id,
+      username: insertUser.username,
+      email: insertUser.email,
       password: hashedPassword,
+      role: insertUser.role,
+      firstName: insertUser.firstName || null,
+      lastName: insertUser.lastName || null,
       createdAt: new Date(),
       lastLogin: null,
     };

@@ -57,13 +57,41 @@
   }
 }
 
-/* Custom gradient backgrounds matching the design */
+/* Animated gradient backgrounds */
 .auth-gradient-1 {
-  background: linear-gradient(135deg, hsl(246, 100%, 96%) 0%, hsl(0, 0%, 100%) 50%, hsl(271, 100%, 96%) 100%);
+  background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #f5576c);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+.dark .auth-gradient-1 {
+  background: linear-gradient(-45deg, #1a1a2e, #16213e, #0f3460, #533483);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
 }
 
 .auth-gradient-2 {
-  background: linear-gradient(135deg, hsl(158, 100%, 96%) 0%, hsl(0, 0%, 100%) 50%, hsl(221, 100%, 96%) 100%);
+  background: linear-gradient(-45deg, #74b9ff, #0984e3, #a29bfe, #6c5ce7);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+.dark .auth-gradient-2 {
+  background: linear-gradient(-45deg, #2d3436, #636e72, #74b9ff, #0984e3);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .gradient-primary {
@@ -99,11 +127,13 @@
 }
 
 .role-card:hover {
-  @apply border-primary bg-primary/10;
+  @apply border-primary;
+  background-color: rgba(99, 102, 241, 0.05);
 }
 
 .role-card.selected {
-  @apply border-primary bg-primary/10;
+  @apply border-primary;
+  background-color: rgba(99, 102, 241, 0.1);
 }
 
 /* Password strength indicator */
@@ -111,3 +141,92 @@
 .strength-fair { @apply bg-yellow-400; }
 .strength-good { @apply bg-blue-400; }
 .strength-strong { @apply bg-green-400; }
+
+/* Floating elements animation */
+.floating-element {
+  animation: float 6s ease-in-out infinite;
+}
+
+.floating-element:nth-child(2) {
+  animation-delay: -2s;
+}
+
+.floating-element:nth-child(3) {
+  animation-delay: -4s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+}
+
+/* Glass morphism effect */
+.glass-card {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.dark .glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Robot/Auth logo positioning */
+.auth-container {
+  position: relative;
+  display: flex;
+  min-height: 100vh;
+}
+
+.auth-form-section {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  z-index: 10;
+}
+
+.auth-visual-section {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+@media (max-width: 1024px) {
+  .auth-container {
+    flex-direction: column;
+  }
+  
+  .auth-visual-section {
+    display: none;
+  }
+}
+
+/* Animated particles */
+.particle {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  animation: particles 20s linear infinite;
+}
+
+@keyframes particles {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px) rotate(360deg);
+    opacity: 0;
+  }
+}

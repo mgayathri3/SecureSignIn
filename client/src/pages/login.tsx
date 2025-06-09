@@ -8,8 +8,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Alert, AlertDescription } from "@/components/ui/alert";
-import { Eye, EyeOff, Shield, Loader2 } from "lucide-react";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
+import { AnimatedBackground } from "@/components/animated-background";
+import { RobotVisual } from "@/components/robot-visual";
+import { Eye, EyeOff, Shield, Loader2, Bot } from "lucide-react";
 
 export default function LoginPage() {
   const [, setLocation] = useLocation();
@@ -39,34 +41,59 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 py-12 auth-gradient-1">
-      <div className="w-full max-w-md">
-        <Card className="card-shadow border-0">
-          <CardHeader className="text-center space-y-4">
-            <div className="mx-auto w-16 h-16 gradient-primary rounded-2xl flex items-center justify-center">
-              <Shield className="h-8 w-8 text-white" />
+    <div className="auth-container auth-gradient-1 relative overflow-hidden">
+      <AnimatedBackground />
+      
+      {/* Theme Toggle */}
+      <div className="absolute top-6 right-6 z-20">
+        <ThemeToggle />
+      </div>
+
+      {/* Robot Visual Section */}
+      <div className="auth-visual-section">
+        <div className="relative">
+          <RobotVisual />
+          <div className="absolute -bottom-10 left-1/2 transform -translate-x-1/2">
+            <div className="glass-card px-6 py-3 rounded-full">
+              <p className="text-sm font-medium text-white dark:text-gray-200">
+                AuthSystem Pro AI
+              </p>
             </div>
-            <div>
-              <CardTitle className="text-2xl font-bold">Welcome Back</CardTitle>
-              <CardDescription className="text-base">
-                Sign in to your account
-              </CardDescription>
-            </div>
-          </CardHeader>
+          </div>
+        </div>
+      </div>
+
+      {/* Form Section */}
+      <div className="auth-form-section">
+        <div className="w-full max-w-md">
+          <Card className="glass-card border-0 shadow-2xl">
+            <CardHeader className="text-center space-y-4">
+              <div className="mx-auto w-16 h-16 gradient-primary rounded-2xl flex items-center justify-center shadow-lg">
+                <Shield className="h-8 w-8 text-white" />
+              </div>
+              <div>
+                <CardTitle className="text-2xl font-bold text-white dark:text-gray-100">
+                  Welcome Back
+                </CardTitle>
+                <CardDescription className="text-base text-gray-200 dark:text-gray-300">
+                  Sign in to your account
+                </CardDescription>
+              </div>
+            </CardHeader>
 
           <CardContent>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
               <div className="space-y-2">
-                <Label htmlFor="username">Username</Label>
+                <Label htmlFor="username" className="text-white dark:text-gray-200">Username</Label>
                 <Input
                   id="username"
                   type="text"
                   placeholder="Enter your username"
-                  className="h-12 rounded-xl focus-ring"
+                  className="h-12 rounded-xl focus-ring bg-white/20 dark:bg-black/20 border-white/30 dark:border-gray-600 text-white dark:text-gray-100 placeholder:text-gray-300 dark:placeholder:text-gray-400"
                   {...register("username")}
                 />
                 {errors.username && (
-                  <p className="text-sm text-destructive">{errors.username.message}</p>
+                  <p className="text-sm text-red-300 dark:text-red-400">{errors.username.message}</p>
                 )}
               </div>
 

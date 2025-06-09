@@ -108,13 +108,15 @@ export default function ProfilePage() {
           {/* Profile Header */}
           <Card className="card-shadow">
             <CardContent className="pt-6">
-              <div className="flex items-center space-x-6">
-                <div className="w-20 h-20 gradient-primary rounded-full flex items-center justify-center">
-                  <span className="text-white text-2xl font-semibold">
-                    {getUserInitials(user.username)}
-                  </span>
+              <div className="flex flex-col lg:flex-row items-center lg:items-start space-y-6 lg:space-y-0 lg:space-x-8">
+                <div className="flex-shrink-0">
+                  <ProfilePictureUpload
+                    currentImage={user.profilePicture}
+                    username={user.username}
+                    onImageChange={handleProfilePictureChange}
+                  />
                 </div>
-                <div>
+                <div className="text-center lg:text-left">
                   <h2 className="text-2xl font-bold text-gray-900">{user.username}</h2>
                   <p className="text-gray-600">{user.email}</p>
                   <Badge 

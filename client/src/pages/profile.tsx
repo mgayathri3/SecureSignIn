@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useLocation } from "wouter";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -8,17 +9,21 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { ProfilePictureUpload } from "@/components/profile-picture-upload";
 import { ArrowLeft, LogOut, Shield, Save, X, History, Key, Crown, GraduationCap } from "lucide-react";
 
 export default function ProfilePage() {
   const [, setLocation] = useLocation();
   const { user, logout, updateProfile, isUpdatePending, isAuthenticated } = useAuth();
+  const [profilePicture, setProfilePicture] = useState<string>(user?.profilePicture || "");
 
   const {
     register,
     handleSubmit,
     formState: { errors, isDirty },
     reset,
+    setValue,
+    watch,
   } = useForm<UpdateProfileRequest>({
     resolver: zodResolver(updateProfileSchema),
     defaultValues: {
@@ -26,6 +31,7 @@ export default function ProfilePage() {
       email: user?.email || "",
       firstName: user?.firstName || "",
       lastName: user?.lastName || "",
+      profilePicture: user?.profilePicture || "",
     },
   });
 
@@ -51,7 +57,16 @@ export default function ProfilePage() {
   };
 
   const onSubmit = (data: UpdateProfileRequest) => {
-    updateProfile(data);
+    const updatedData = {
+      ...data,
+      profilePicture: profilePicture,
+    };
+    updateProfile(updatedData);
+  };
+
+  const handleProfilePictureChange = (imageData: string) => {
+    setProfilePicture(imageData);
+    setValue('profilePicture', imageData, { shouldDirty: true });
   };
 
   const getUserInitials = (username: string) => {

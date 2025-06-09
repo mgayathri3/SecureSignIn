@@ -10,6 +10,7 @@ export const users = pgTable("users", {
   role: text("role").notNull(),
   firstName: text("first_name"),
   lastName: text("last_name"),
+  profilePicture: text("profile_picture"),
   createdAt: timestamp("created_at").defaultNow(),
   lastLogin: timestamp("last_login"),
 });
@@ -45,6 +46,7 @@ export const updateProfileSchema = z.object({
   email: z.string().email("Invalid email address"),
   firstName: z.string().optional(),
   lastName: z.string().optional(),
+  profilePicture: z.string().optional(),
 });
 
 export type InsertUser = z.infer<typeof insertUserSchema>;

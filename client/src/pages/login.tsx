@@ -44,10 +44,7 @@ export default function LoginPage() {
     <div className="auth-container auth-gradient-1 relative overflow-hidden">
       <AnimatedBackground />
       
-      {/* Theme Toggle */}
-      <div className="absolute top-6 right-6 z-20">
-        <ThemeToggle />
-      </div>
+
 
       {/* Robot Visual Section */}
       <div className="auth-visual-section">

@@ -48,6 +48,7 @@ export class MemStorage implements IStorage {
       role: insertUser.role,
       firstName: insertUser.firstName || null,
       lastName: insertUser.lastName || null,
+      profilePicture: null,
       createdAt: new Date(),
       lastLogin: null,
     };
